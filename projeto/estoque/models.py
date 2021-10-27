@@ -16,7 +16,8 @@ MOVIMENTO = (
 class Estoque(TimeStampedModel):
     funcionario = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     movimento = models.CharField(max_length=1, choices=MOVIMENTO, blank=True)
-    estoque_produto = models.ForeignKey(Produto, on_delete=models.CASCADE, null=True, blank=True, related_name='NOME_DO_PRODUTO')
+    estoque_produto = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='NOME_DO_PRODUTO')
+    observacao = models.CharField('Motivo', max_length=128)
 
     class Meta:
         ordering = ('-created',)

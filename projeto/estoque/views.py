@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
@@ -63,7 +62,7 @@ def dar_baixa_estoque(form):
         produto.save()
     print('Estoque atualizado com sucesso.')
 
-
+@login_required
 def estoque_add(request, form_inline, template_name, movimento, url):
     estoque_form = Estoque()
     item_estoque_formset = inlineformset_factory(

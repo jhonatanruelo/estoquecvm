@@ -1,7 +1,5 @@
 from datetime import datetime
-
-import pandas as pd
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
@@ -43,7 +41,7 @@ def produto_detail(request, pk):
     context = {'object': obj}
     return render(request, template_name, context)
 
-
+@login_required
 def produto_add(request):
     form = ProdutoForm(request.POST or None)
     template_name = 'produto_form2.html'
